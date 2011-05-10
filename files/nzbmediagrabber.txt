@@ -1,0 +1,20 @@
+packages to install:
+
+ubuntu:
+	git => git, liberror-perl, patch
+	
+Things to install:
+	SABnzbd+: http://sourceforge.net/projects/sabnzbdplus/files/sabnzbdplus/sabnzbd-0.6.0/SABnzbd-0.6.0-src.tar.gz/download
+	sickbeard: https://github.com/midgetspy/Sick-Beard.git
+	couchpotato: https://github.com/RuudBurger/CouchPotato.git
+	
+create a mediagrabber user.
+
+SABNzbd:
+	requires - Cheetah, cherrypy
+		Ubuntu: python-cheetah, unrar, 
+	
+make directory: 
+	ask for install directory (default = /opt/nzbmediagrabber)
+	
+need: init script for sabnzbd/sickbeard/couchpotato
