@@ -22,31 +22,44 @@
 #
 #
 class nzbmediagrabber {
-	include sabnzbd
-	include sickbeard
-	include couchpotato
+	include nzbmediagrabber::sabnzbd
+	#include nzbmediagrabber::sickbeard
+	#include nzbmediagrabber::couchpotato
 	
-	# Globals to be converted into Class Variables
-	$software_base 	= '/usr/local/mediagrabber'
-	$media_base		= '/opt/media'
+	# TODO: Globals to be converted into Class Variables
+	$software_base = '/usr/local/mediagrabber'
+	$media_base    = '/opt/media'
+        $user_id       = 'mediagrabber'
+	$home_dir      = "/home/${user_id}"
 	
 	# Create default user to execute scripts
-	user { "mediagrabber":
+	user { $user_id:
 		ensure 	=> present,
 		comment => "Automated Media Grabber",
-		home 	=> "/home/mediagrabber",
+		home 	=> $home_dir,
 		shell 	=> "/bin/bash",
 		uid 	=> '63342',
-		gid 	=> '63342',
+		gid 	=> $user_id,
 	}
-	
-	File{ owner => 'mediagrabber', group => 'mediagrabber', mode => '0755' }
+
+        group { $user_id: 
+                ensure  => present,
+                gid     => '63342'
+        }
+
+	File{ owner => $user_id, group => $user_id, mode => '0644' }
 	
 	# Create base directory structure for files
-	file { 
-		"${media_base}/movies": { ensure => directory, }
-		"${media_base}/television": { ensure => directory, }
-		"${media_base}/software": { ensure => directory, }
-		"${software_base}/software": { ensure => directory, }
+	file {
+                $media_base                 : ensure => directory;
+                $software_base              : ensure => directory;
+		"${media_base}/movies"      : ensure => directory; 
+		"${media_base}/television"  : ensure => directory; 
+		"${media_base}/software"    : ensure => directory; 
+		"${software_base}/software" : ensure => directory;
+		$home_dir:
+			ensure  => directory,
+			source  => '/etc/skel',
+			recurse => 'true';
 	}
 }
