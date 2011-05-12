@@ -53,6 +53,7 @@ class nzbmediagrabber(
 	file {
                 $media_base                             : ensure => directory;
                 $software_base                          : ensure => directory;
+                $scratch_base                           : ensure => directory;
 		"${media_base}/movies"                  : ensure => directory; 
 		"${media_base}/television"              : ensure => directory; 
 		"${media_base}/software"                : ensure => directory; 
@@ -60,6 +61,7 @@ class nzbmediagrabber(
                 "${scratch_base}/incoming"              : ensure => directory;
                 "${scratch_base}/incoming/television"   : ensure => directory;
                 "${scratch_base}/incoming/movies"       : ensure => directory;
+                "${scratch_base}/post"                  : ensure => directory;
                 "${scratch_base}/post/television"       : ensure => directory;
                 "${scratch_base}/post/movies"           : ensure => directory;
                 "${scratch_base}/processing"            : ensure => directory;
