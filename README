@@ -4,6 +4,13 @@ This manifest is designed to setup a backend system capable of gathering media f
 * SickBeard - Automated Television Scanner with Usenet
 * CouchPotato - Automated Movie Scanner with Usenet
 
+Applications still need to be configured to connect to a Usenet Server (SABNZBD) and Indexing Sites (SickBeard/CouchPotato). Please do not contact me for assistance with this portion. I will not accept any liability for usage of this tool for inappropriate purposes. 
+
+Applications run by default on the following ports:
+* SABNZBD       : TCP/8080
+* SickBeard     : TCP/8081
+* CouchPotato   : TCP:5000
+
 This manifest sets up a file based watch system between the three tools in order to allow separation among local systems (directories) or between physical computers (LAN) as appropriate. The file structure is setup as such to facilate media management.
 
 ${media_base}/{movies,television,software} - final resting place for media, frontends should point to this directory.
@@ -20,3 +27,4 @@ This manifest is currently in beta form. It has been tested and deployed on the 
 Future Support for Downloads will include:
 * Fedora Linux
 * OS X - Snow Leopard
+
