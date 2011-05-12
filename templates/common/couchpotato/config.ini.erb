@@ -95,7 +95,7 @@ enabled = False
 [NZB]
 sendto = Blackhole
 enabled = True
-blackhole = <%- scope.lookupvar('nzbmediagrabber::scratch_base') %>/incoming/movies 
+blackhole = <%= scope.lookupvar('nzbmediagrabber::scratch_base') %>/incoming/movies 
 retention = 300
 
 [NZBsorg]
