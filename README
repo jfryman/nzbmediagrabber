@@ -1,0 +1,22 @@
+This manifest is designed to setup a backend system capable of gathering media from a collection of sources via Usenet. This tool ties together three tools in order to automate most of the processing.
+
+* SABNZBD+ - Usenet Downloader / Par2 / UnRAR tool
+* SickBeard - Automated Television Scanner with Usenet
+* CouchPotato - Automated Movie Scanner with Usenet
+
+This manifest sets up a file based watch system between the three tools in order to allow separation among local systems (directories) or between physical computers (LAN) as appropriate. The file structure is setup as such to facilate media management.
+
+${media_base}/{movies,television,software} - final resting place for media, frontends should point to this directory.
+${software_base} - local install directory for all applications
+${scratch_base}/{incoming,post,processing} - working directory for all applications.
+
+Each of the applications have a general processing flow as indicated below:
+
+Application --NZB Download--> SABNZBD Download/PAR2/UnRAR --Post Processing Files--> Application --Metadata/Cleanup--> Media Base
+
+This manifest is currently in beta form. It has been tested and deployed on the following operating systems:
+* Ubuntu Linux
+
+Future Support for Downloads will include:
+* Fedora Linux
+* OS X - Snow Leopard
