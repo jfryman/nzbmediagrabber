@@ -21,17 +21,16 @@
 # Class: nzbmediagrabber
 #
 #
-class nzbmediagrabber {
+class nzbmediagrabber(
+        $software_base = '/usr/local/mediagrabber',
+        $media_base    = '/opt/media',
+        $user_id       = 'mediagrabber',
+        $home_dir      = '/home/mediagrabber'
+) {
 	include nzbmediagrabber::sabnzbd
-	#include nzbmediagrabber::sickbeard
-	#include nzbmediagrabber::couchpotato
-	
-	# TODO: Globals to be converted into Class Variables
-	$software_base = '/usr/local/mediagrabber'
-	$media_base    = '/opt/media'
-        $user_id       = 'mediagrabber'
-	$home_dir      = "/home/${user_id}"
-	
+	include nzbmediagrabber::sickbeard
+	include nzbmediagrabber::couchpotato
+       
 	# Create default user to execute scripts
 	user { $user_id:
 		ensure 	=> present,
