@@ -4,19 +4,24 @@ password =
 enabled = False
 host = localhost
 
+[MovieRSS]
+minyear = 2000
+minrating = 6.0
+enabled = False
+
 [global]
 username = 
 preferredwords = 
 git = git
 host = 0.0.0.0
 urlbase = 
-updater = True
-launchbrowser = False
+updater = False
+ignorewords = 
 requiredwords = 
 server.environment = production
 password = 
 port = 5000
-ignorewords = 
+launchbrowser = False
 
 [PROWL]
 keys = 
@@ -27,12 +32,21 @@ priority = 0
 [IMDB]
 
 [Sabnzbd]
-username = james
-category = movies
-apikey = 4f2592b92bc289e6cf933a89253ef9ab
-host = localhost:8080
+username = 
+category = 
+apikey = 
+host = 
 ppdir = 
-password = D1lberttech
+password = 
+
+[XBMC]
+username = xbmc
+dbpath = 
+enabled = False
+onsnatch = False
+host = localhost
+updateoneonly = False
+password = xbmc
 
 [newznab]
 host = 
@@ -44,15 +58,9 @@ username =
 password = 
 enabled = False
 
-[Meta]
-fanartfilename = fanart.<orig_ext>
-nfofilename = movie.nfo
-enabled = True
-posterminheight = 0
-fanartminwidth = 0
-posterminwidth = 0
-fanartminheight = 0
-posterfilename = movie.tbn
+[Intervals]
+search = 24
+renamer = 5
 
 [TheMovieDB]
 key = 9b939aee0aaafc12a65bf448e4af9543
@@ -63,25 +71,20 @@ addlanguage = False
 name = filename
 enabled = True
 
-[Torrents]
-enabled = False
-blackhole = 
-wait = 24
-
 [Renamer]
 filenaming = <thename><cd>.<ext>
-destination = 
-enabled = False
-cleanup = False
+destination = <%= scope.lookupvar('nzbmediagrabber::media_base') %>/movies 
+enabled = True
+cleanup = True
 foldernaming = <namethe> (<year>)
-separator = 
-download = 
+separator =  
+download = <%= scope.lookupvar('nzbmediagrabber::scratch_base') %>/post/movies
 trailerquality = False
 
 [NZBMatrix]
-username = jfryman
-apikey = 0bdff3de05b7a267296bf4d61dcd988a
-enabled = True
+username = 
+apikey = 
+enabled = False
 ssl = False
 english = False
 
@@ -90,15 +93,15 @@ host =
 enabled = False
 
 [NZB]
-retention = 300
+sendto = Blackhole
 enabled = True
-blackhole = 
-sendto = Sabnzbd
+blackhole = <%- scope.lookupvar('nzbmediagrabber::scratch_base') %>/incoming/movies 
+retention = 300
 
 [NZBsorg]
-enabled = True
-id = 51165
-key = 720bd72c86ae922f3b83d2e3970d7498
+enabled = False
+id = 
+key = 
 
 [Trailer]
 quality = 
@@ -134,20 +137,24 @@ smax-1080p = 20000
 smax-tc = 1000
 smin-720p = 3500
 
-[Intervals]
-search = 24
-renamer = 5
+[Meta]
+fanartfilename = fanart.<orig_ext>
+nfofilename = movie.nfo
+enabled = True
+posterminheight = 0
+fanartminwidth = 0
+posterminwidth = 0
+fanartminheight = 0
+posterfilename = movie.tbn
 
-[XBMC]
-username = xbmc
+[Torrents]
 enabled = False
-host = localhost
-onsnatch = False
-updateoneonly = False
-password = xbmc
+blackhole = 
+wait = 24
 
 [NMJ]
 host = 
 enabled = False
 mount = 
 database = 
+

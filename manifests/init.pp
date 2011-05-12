@@ -25,7 +25,8 @@ class nzbmediagrabber(
         $software_base = '/usr/local/mediagrabber',
         $media_base    = '/opt/media',
         $user_id       = 'mediagrabber',
-        $home_dir      = '/home/mediagrabber'
+        $home_dir      = '/home/mediagrabber',
+        $scratch_base  = '/opt/media/scratch'
 ) {
 	include nzbmediagrabber::sabnzbd
 	include nzbmediagrabber::sickbeard
@@ -50,12 +51,22 @@ class nzbmediagrabber(
 	
 	# Create base directory structure for files
 	file {
-                $media_base                 : ensure => directory;
-                $software_base              : ensure => directory;
-		"${media_base}/movies"      : ensure => directory; 
-		"${media_base}/television"  : ensure => directory; 
-		"${media_base}/software"    : ensure => directory; 
-		"${software_base}/software" : ensure => directory;
+                $media_base                             : ensure => directory;
+                $software_base                          : ensure => directory;
+		"${media_base}/movies"                  : ensure => directory; 
+		"${media_base}/television"              : ensure => directory; 
+		"${media_base}/software"                : ensure => directory; 
+		"${software_base}/software"             : ensure => directory;
+                "${scratch_base}/incoming"              : ensure => directory;
+                "${scratch_base}/incoming/television"   : ensure => directory;
+                "${scratch_base}/incoming/movies"       : ensure => directory;
+                "${scratch_base}/post/television"       : ensure => directory;
+                "${scratch_base}/post/movies"           : ensure => directory;
+                "${scratch_base}/processing"            : ensure => directory;
+                "${scratch_base}/processing/incomplete" : ensure => directory;
+                "${scratch_base}/processing/complete"   : ensure => directory;
+                "${scratch_base}/processing/logs"       : ensure => directory;
+                "${scratch_base}/processing/cache"      : ensure => directory;
 		$home_dir:
 			ensure  => directory,
 			source  => '/etc/skel',
