@@ -27,6 +27,7 @@ class nzbmediagrabber(
 				recurse => 'true',
 				owner   => $nzbmediagrabber::user_id,
 				group   => $nzbmediagrabber::user_id,
+				audit	=> all,
 			}
 		}
 		default:  { 
