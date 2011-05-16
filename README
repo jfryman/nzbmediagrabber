@@ -9,11 +9,11 @@ Applications still need to be configured to connect to a Usenet Server (SABNZBD)
 Applications run by default on the following ports:
 * SABNZBD       : TCP/8080
 * SickBeard     : TCP/8081
-* CouchPotato   : TCP:5000
+* CouchPotato   : TCP/5000
 
-This manifest sets up a file based watch system between the three tools in order to allow separation among local systems (directories) or between physical computers (LAN) as appropriate. The file structure is setup as such to facilate media management.
+This manifest sets up a file based watch system between the three tools in order to allow separation among local systems (directories) or between physical computers (LAN) as appropriate. The file structure is setup as such to facilitate media management.
 
-${media_base}/{movies,television,software} - final resting place for media, frontends should point to this directory.
+${media_base}/{movies,television,software} - final resting place for media, front-ends should point to this directory.
 ${software_base} - local install directory for all applications
 ${scratch_base}/{incoming,post,processing} - working directory for all applications.
 

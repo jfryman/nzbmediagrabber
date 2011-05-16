@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Label</key>
+	<string>com.nzbmediagrabber.sabnzbd</string>
+	<key>OnDemand</key>
+	<false/>
+	<key>ProgramArguments</key>
+	<array>
+	<string><%= scope.lookupvar('nzbmediagrabber::software_base') %>/SABnzbd-<%= scope.lookupvar('nzbmediagrabber::sabnzbd_version') %>/SABnzbd.py</string>
+	</array>
+	<key>RunAtLoad</key>
+	<true/>
+	<key>UserName</key>
+	<string><%= scope.lookupvar('nzbmediagrabber::user_id') %></string>
+	<key>WorkingDirectory</key>
+	<string><%= scope.lookupvar('nzbmediagrabber::home_dir') %>/</string>
+	<key>ServiceDescription</key>
+	<string>SABnzbd+</string>
+</dict>
+</plist>
