@@ -27,11 +27,13 @@ class nzbmediagrabber(
   if $sickbeard == 'true' {
     class { 'nzbmediagrabber::sbeard':
       require => Class['nzbmediagrabber::base'],
+      before  => Anchor['nzbmediagrabber::end'],
     }
   }
   if $couchpotato == 'true' {
     class { 'nzbmediagrabber::cpotato': 
       require => Class['nzbmediagrabber::base'],
+      before  => Anchor['nzbmediagrabber::end'],
     }    
   }
 }

@@ -34,6 +34,14 @@ DESC=SickBeard
 RUN_AS=<%= scope.lookupvar('nzbmediagrabber::params::nr_user_id') %>
 
 ############### END EDIT ME ##################
+. /lib/lsb/init-functions
+
+is_running() {
+    # returns 0 when running, 1 otherwise
+    PID="$(pgrep -f -x -u $RUN_AS "$DAEMON $DESC.*")"
+    RET=$?
+    [ $RET -gt 1 ] && exit 1 || return $RET
+}
 
 test -x $DAEMON || exit 0
 
@@ -53,7 +61,14 @@ case "$1" in
         echo "Stopping $DESC"
         start-stop-daemon --stop --pidfile $PID_FILE
         ;;
-
+  status)
+        if is_running; then
+            log_success_msg "$DESC: running (pid $PID)"
+        else
+            log_success_msg "$DESC: not running"
+            [ -f $PIDFILE ] && exit 1 || exit 3
+        fi
+        ;;      
   restart|force-reload)
         echo "Restarting $DESC"
         start-stop-daemon --stop --pidfile $PID_FILE
