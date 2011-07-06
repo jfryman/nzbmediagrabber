@@ -1,3 +1,0 @@
-class nzbmediagrabber::couchpotato::ubuntu {
-
-}

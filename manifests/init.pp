@@ -16,27 +16,22 @@ class nzbmediagrabber(
   anchor { 'nzbmediagrabber::end': }
   
   class { 'nzbmediagrabber::base': 
-    require => Anchor['nzbmediagrabber::begin'],
+    require => Anchor['nzbmediagrabber::begin'], 
   }
-  
   if $sabnzbd == 'true' {
     class { 'nzbmediagrabber::sabnzbd': 
       require => Class['nzbmediagrabber::base'],
       before  => Anchor['nzbmediagrabber::end'],
     }   
   }
-
   if $sickbeard == 'true' {
-    class { 'nzbmediagrabber::sickbeard': 
+    class { 'nzbmediagrabber::sbeard':
       require => Class['nzbmediagrabber::base'],
-      before  => Anchor['nzbmediagrabber::end'],
-    }   
+    }
   }
-
   if $couchpotato == 'true' {
-    class { 'nzbmediagrabber::couchpotato': 
+    class { 'nzbmediagrabber::cpotato': 
       require => Class['nzbmediagrabber::base'],
-      before  => Anchor['nzbmediagrabber::end'],  
     }    
   }
 }

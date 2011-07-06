@@ -9,8 +9,8 @@ class nzbmediagrabber::params {
 		default  => "/home/${nr_user_id}",
 	}
 	
-	$nr_sabnzbd_daemon = $operatingsystem {
-	  /(?i-mx:ubuntu) => 'sabnzbdplus',
+	$nr_sabnzbd_daemon = $operatingsystem ? {
+	  /(?i-mx:ubuntu)/ => 'sabnzbdplus',
 	}
   
   $nr_sabnzbd_version = '0.6.0'

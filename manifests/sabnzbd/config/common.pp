@@ -3,6 +3,6 @@ class nzbmediagrabber::sabnzbd::config::common {
     ensure => directory,
   }
   file { "${nzbmediagrabber::params::nr_software_base}/sabnzbd/config.ini":
-	  content => template('nzbmediagrabber/common/sabnzbd/config.ini.erb'),
+	  content => template('nzbmediagrabber/sabnzbd/common/config.ini.erb'),
   }
 }

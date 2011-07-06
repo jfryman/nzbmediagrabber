@@ -1,0 +1,160 @@
+[GROWL]
+onsnatch = False
+password = 
+enabled = False
+host = localhost
+
+[MovieRSS]
+minyear = 2000
+minrating = 6.0
+enabled = False
+
+[global]
+username = 
+preferredwords = 
+git = git
+host = <%= ipaddress %>
+urlbase = 
+updater = False
+ignorewords = 
+requiredwords = 
+server.environment = production
+password = 
+port = 5000
+launchbrowser = False
+
+[PROWL]
+keys = 
+onsnatch = False
+enabled = False
+priority = 0
+
+[IMDB]
+
+[Sabnzbd]
+username = 
+category = 
+apikey = 
+host = 
+ppdir = 
+password = 
+
+[XBMC]
+username = xbmc
+dbpath = 
+enabled = False
+onsnatch = False
+host = localhost
+updateoneonly = False
+password = xbmc
+
+[newznab]
+host = 
+apikey = 
+enabled = False
+
+[newzbin]
+username = 
+password = 
+enabled = False
+
+[Intervals]
+search = 24
+renamer = 5
+
+[TheMovieDB]
+key = 9b939aee0aaafc12a65bf448e4af9543
+
+[Subtitles]
+languages = en
+addlanguage = False
+name = filename
+enabled = True
+
+[Renamer]
+filenaming = <thename><cd>.<ext>
+destination = <%= scope.lookupvar('nzbmediagrabber::params::nr_media_base') %>/movies 
+enabled = True
+cleanup = True
+foldernaming = <namethe> (<year>)
+separator =  
+download = <%= scope.lookupvar('nzbmediagrabber::params::nr_scratch_base') %>/post/movies
+trailerquality = False
+
+[NZBMatrix]
+username = 
+apikey = 
+enabled = False
+ssl = False
+english = False
+
+[PLEX]
+host = 
+enabled = False
+
+[NZB]
+sendto = Blackhole
+enabled = True
+blackhole = <%= scope.lookupvar('nzbmediagrabber::params::nr_scratch_base') %>/incoming/movies 
+retention = 300
+
+[NZBsorg]
+enabled = False
+id = 
+key = 
+
+[Trailer]
+quality = 
+name = movie-trailer
+
+[Notifo]
+username = 
+onsnatch = False
+enabled = False
+key = 
+
+[Quality]
+smax-dvdr = 10000
+smin-1080p = 5000
+smin-cam = 600
+hide = scr,tc,ts,cam
+smax-720p = 10000
+smin-r5 = 600
+smax-brrip = 7000
+smax-cam = 1000
+smin-brrip = 700
+smin-tc = 600
+smin-scr = 600
+smax-scr = 1000
+smax-r5 = 1000
+smin-dvdr = 3000
+smax-dvdrip = 2400
+smin-ts = 600
+smin-dvdrip = 600
+default = 720p
+smax-ts = 1000
+smax-1080p = 20000
+smax-tc = 1000
+smin-720p = 3500
+
+[Meta]
+fanartfilename = fanart.<orig_ext>
+nfofilename = movie.nfo
+enabled = True
+posterminheight = 0
+fanartminwidth = 0
+posterminwidth = 0
+fanartminheight = 0
+posterfilename = movie.tbn
+
+[Torrents]
+enabled = False
+blackhole = 
+wait = 24
+
+[NMJ]
+host = 
+enabled = False
+mount = 
+database = 
+

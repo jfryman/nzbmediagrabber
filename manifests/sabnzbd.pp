@@ -1,17 +1,18 @@
 class nzbmediagrabber::sabnzbd {
-  anchor { 'nzbmediagrabber::sabnzbd::begin': }
+  anchor { 'nzbmediagrabber::sabnzbd::begin': 
+    before => Class['nzbmediagrabber::sabnzbd::package']
+  }
   
   class { 'nzbmediagrabber::sabnzbd::package': 
-    require => Anchor['nzbmediagrabber::sabnzbd::begin'],
+    notify  => Class['nzbmediagrabber::sabnzbd::service'],
   }
   
   class { 'nzbmediagrabber::sabnzbd::config':  
     require => Class['nzbmediagrabber::sabnzbd::package'],
+    notify  => Class['nzbmediagrabber::sabnzbd::service'],
   }
   
-  class { 'nzbmediagrabber::sabnzbd::service': 
-    subscribe => Class['nzbmediagrabber::sabnzbd::service'],
-  }
+  class { 'nzbmediagrabber::sabnzbd::service': }
   
   anchor { 'nzbmediagrabber::sabnzbd::end':   
     require => Class['nzbmediagrabber::sabnzbd::service'],
