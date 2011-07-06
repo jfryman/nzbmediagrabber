@@ -1,4 +1,4 @@
-__version__ = 18
+<% require 'digest/sha1' %>
 [misc]
 queue_complete = ""
 https_port = 9090
@@ -15,7 +15,7 @@ web_color2 = ""
 dirscan_speed = 5
 enable_filejoin = 1
 create_group_folders = 0
-api_key = 
+api_key = "<%= Digest::SHA1.hexdigest(Time.now.to_s + rand(99999999).to_s)[1..32] %>"
 no_penalties = 0
 bandwidth_limit = 0
 dirscan_dir = <%= scope.lookupvar('nzbmediagrabber::params::nr_scratch_base') %>/incoming
